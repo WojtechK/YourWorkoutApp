@@ -1,0 +1,123 @@
+@import '../../styles.scss';
+
+* {
+    overflow: hidden;
+    user-select: none;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: url('./../../assets/intro-bg.png') $global-background-color no-repeat;
+    background-size: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#title {
+    display: inline-block;
+    font-size: 5vw;
+    letter-spacing: 20px;
+    font-weight: bolder;
+
+    span:first-child {
+        color: $global-text-color;
+    }
+
+    span:last-child {
+        color: $global-theme-color;
+    }
+
+    #description {
+        font-size: $global-text-size;
+        color: $global-text-color;
+        letter-spacing: $global-letter-spacing;
+    }
+}
+
+#start_button {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    bottom: 10%;
+    padding: 40px;
+    animation: Pulse 1.5s infinite alternate ease-in-out;
+
+    p {
+        font-size: $global-text-size;
+        color: $global-text-color;
+        letter-spacing: $global-letter-spacing;
+        transition: 1s;
+    }
+
+    .arrow {
+        opacity: 0;
+        position: absolute;
+        color: $global-theme-color;
+        font-size: 48px;
+        transition: 1s;
+    }
+}
+
+#start_button:hover {
+    p {
+        transform: translateY(-20px);
+    }
+
+    .arrow {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+}
+
+@keyframes Pulse {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.05);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        background-size: 350%;
+        background-position: 20% top;
+        display: block;
+    }
+
+    #title {
+        margin-top: 30%;
+        width: 100%;
+
+        header {
+            font-size: 8vw;
+            letter-spacing: 7px;
+        }
+
+        #description {
+            font-size: 3vw;
+            letter-spacing: 2px;
+        }
+    }
+
+    #start_button {
+        bottom: 20%;
+        left: 0;
+        right: 0;
+        padding: 50px;
+        p {
+            font-size: 3vw;
+            letter-spacing: 2px;
+        }
+        .arrow {
+            transform: translateY(20px);
+        }
+    }
+}

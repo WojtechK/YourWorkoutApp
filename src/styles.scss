@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+$theme-orange-color: rgb(255,137,20);
+$background-dark-color: rgb(26,26,26);
+$font-light-color: rgb(216,217,220);
+
+$global-font: 'Roboto', sans-serif;
+$global-theme-color: $theme-orange-color;
+$global-background-color: $background-dark-color;
+$global-text-color: $font-light-color;
+$global-text-size: 1.5vw;
+$global-letter-spacing: 4px;
+
+* { 
+    font-family: $global-font;
+}
