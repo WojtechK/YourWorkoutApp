@@ -3,9 +3,11 @@
 * {
     overflow: hidden;
     user-select: none;
+    margin: 0;
+    padding: 0;
 }
 
-.container {
+.main-container {
     width: 100vw;
     height: 100vh;
     background: url('./../../assets/intro-bg.png') $global-background-color no-repeat;
@@ -17,28 +19,29 @@
     align-items: center;
 }
 
-#title {
-    display: inline-block;
+.title {
     font-size: 5vw;
     letter-spacing: 20px;
     font-weight: bolder;
-
-    span:first-child {
-        color: $global-text-color;
+    header {
+        display: flex;
+        flex-direction: row;
+        p:first-child {
+            color: $global-text-color;
+        }
+    
+        p:last-child {
+            color: $global-theme-color;
+        }
     }
-
-    span:last-child {
-        color: $global-theme-color;
-    }
-
-    #description {
+    .description {
         font-size: $global-text-size;
         color: $global-text-color;
         letter-spacing: $global-letter-spacing;
     }
 }
 
-#start_button {
+.start_button {
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -64,7 +67,7 @@
     }
 }
 
-#start_button:hover {
+.start_button:hover {
     p {
         transform: translateY(-20px);
     }
@@ -92,7 +95,7 @@
         display: block;
     }
 
-    #title {
+    .title {
         margin-top: 30%;
         width: 100%;
 
@@ -101,13 +104,13 @@
             letter-spacing: 7px;
         }
 
-        #description {
+        .description {
             font-size: 3vw;
             letter-spacing: 2px;
         }
     }
 
-    #start_button {
+    .start_button {
         bottom: 20%;
         left: 0;
         right: 0;

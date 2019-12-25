@@ -1,0 +1,20 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class='main-container'>
+
+  <div class='header'>
+    <p class='text-uppercase'> {{ header }} </p>
+  </div>
+
+  <div class='description'>
+    <p> {{ description }} </p>
+  </div>
+
+  <div class='list'>
+    <div class='exercise-box' *ngFor='let exercise of exercises'>
+        <img src='../../assets/avatars/{{exercise}}.png' alt="{{exercise}} img">
+        <p> {{ exercise }} </p> 
+        <i class="arrow material-icons"> keyboard_arrow_right </i> 
+    </div>
+  </div>
+</div>
