@@ -11,6 +11,9 @@ export class DashboardComponent implements OnInit {
   readonly description: string = 'Choose exercises plan prepared especially for you';
   readonly exercises: string[] = ['abs', 'back', 'chest', 'biceps', 'triceps', 'shoulders', 'quadriceps', 'harmstrings'];
 
+  public innerWidth: any;
+
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
   }
 }

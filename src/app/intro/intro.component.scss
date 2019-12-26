@@ -26,6 +26,7 @@
     header {
         display: flex;
         flex-direction: row;
+        justify-content: center;
         p:first-child {
             color: $global-text-color;
         }
@@ -89,7 +90,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .container {
+    .main-container {
         background-size: 350%;
         background-position: 20% top;
         display: block;
@@ -100,7 +101,7 @@
         width: 100%;
 
         header {
-            font-size: 8vw;
+            font-size: 10vw;
             letter-spacing: 7px;
         }
 
@@ -116,7 +117,7 @@
         right: 0;
         padding: 50px;
         p {
-            font-size: 3vw;
+            font-size: 5vw;
             letter-spacing: 2px;
         }
         .arrow {

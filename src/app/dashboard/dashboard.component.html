@@ -6,7 +6,7 @@
     <p class='text-uppercase'> {{ header }} </p>
   </div>
 
-  <div class='description'>
+  <div class='description' [ngStyle]="{display: innerWidth < '600' ? 'none' : 'flex'}">
     <p> {{ description }} </p>
   </div>
 
