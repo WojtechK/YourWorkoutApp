@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.scss']
 })
-export class IntroComponent implements OnInit {
+export class IntroComponent  {
 
   readonly title: string = 'your workout';
   readonly description: string = 'personal training web application';
   
-  ngOnInit() {
-  }
 }

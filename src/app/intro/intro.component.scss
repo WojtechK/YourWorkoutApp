@@ -42,7 +42,7 @@
     }
 }
 
-.start_button {
+.start-button {
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -68,7 +68,7 @@
     }
 }
 
-.start_button:hover {
+.start-button:hover {
     p {
         transform: translateY(-20px);
     }
@@ -111,7 +111,7 @@
         }
     }
 
-    .start_button {
+    .start-button {
         bottom: 20%;
         left: 0;
         right: 0;

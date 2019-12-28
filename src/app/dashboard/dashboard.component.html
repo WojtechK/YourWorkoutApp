@@ -11,9 +11,9 @@
   </div>
 
   <div class='list'>
-    <div class='exercise-box' *ngFor='let exercise of exercises'>
-        <img src='../../assets/avatars/{{exercise}}.png' alt="{{exercise}} img">
-        <p> {{ exercise }} </p> 
+    <div class='workout-box' *ngFor='let workout of workouts' [routerLink]=" isWorkoutEnabled(workout) ? ['/workout'] : []">
+        <img src='../../assets/avatars/{{ workout }}.png' alt="{{ workout }} img">
+        <p> {{ workout }} </p> 
         <i class="arrow material-icons"> keyboard_arrow_right </i> 
     </div>
   </div>
