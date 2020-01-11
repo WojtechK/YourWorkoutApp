@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WORKOUTS }  from '../workouts';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,18 +10,17 @@ export class DashboardComponent implements OnInit {
 
   readonly header: string = 'workouts';
   readonly description: string = 'Choose exercises plan prepared especially for you';
-  readonly workouts: string[] = ['abs', 'back', 'chest', 'biceps', 'triceps', 'shoulders', 'quadriceps', 'harmstrings'];
-  readonly enabledWorkouts: string[] = ['abs'];
+  workouts: any;
+  innerWidth: any;
 
-  public innerWidth: any;
-
-  isWorkoutEnabled(workout) { 
-    if(this.enabledWorkouts.includes(workout)) { 
+  isWorkoutEnabled(workout): boolean {
+    if(workout.enabled === true) {
       return true;
     }
   }
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
+    this.workouts = WORKOUTS;
   }
 }

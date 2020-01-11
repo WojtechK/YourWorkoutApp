@@ -1,1 +1,28 @@
-<div #rendererContainer></div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class='main-container'>
+
+  <div class='header'>
+    <p class='text-uppercase'> {{ header }} </p>
+  </div>
+
+  <div class='exercises-container'>
+    <ul class='exercises-list'>
+      <li 
+      class='exercise-box'
+      *ngFor='let exercise of exercises'
+      (click)='onSelect(exercise)'
+      [class.selected]='exercise===currentExercise'
+      >
+       <p> {{ exercise.title }} </p>
+        <i class="arrow material-icons"> keyboard_arrow_right </i>
+      </li>
+    </ul>
+    <div class='exercise-details' *ngIf='currentExercise'>
+      <p> {{ currentExercise.title }} </p>
+      <p> <b>description:</b> {{ currentExercise.description }} </p>
+      <p> <b>difficulty:</b> {{ currentExercise.difficulty }} </p>
+    </div>
+  </div>
+
+</div>

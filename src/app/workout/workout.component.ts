@@ -1,43 +1,30 @@
-import { Component, ViewChild } from '@angular/core';
-import * as THREE from 'three';
+import { Component, OnInit } from '@angular/core';
+import { Exercise } from '../exercise';
+import { WorkoutService } from '../services/workout.service';
+
 
 @Component({
   selector: 'app-workout',
   templateUrl: './workout.component.html',
   styleUrls: ['./workout.component.scss']
 })
-export class WorkoutComponent {
+export class WorkoutComponent implements OnInit {
 
-    @ViewChild('rendererContainer', null) rendererContainer;
+  constructor(private workoutService: WorkoutService) {}
 
-    renderer = new THREE.WebGLRenderer();
-    scene = null;
-    camera = null;
-    mesh = null;
+  readonly header: string = 'abs';
+  exercises: Exercise[];
+  currentExercise: Exercise;
 
-    constructor() {
-        this.scene = new THREE.Scene();
+  getExercises(): void {
+    this.workoutService.getExercises().subscribe(exercises => this.exercises = exercises);
+  }
 
-        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-        this.camera.position.z = 1000;
-
-        const geometry = new THREE.BoxGeometry(200, 200, 200);
-        const material = new THREE.MeshBasicMaterial({color: 0xff0000, wireframe: true});
-        this.mesh = new THREE.Mesh(geometry, material);
-
-        this.scene.add(this.mesh);
-    }
-
-    ngAfterViewInit() {
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-        this.animate();
-    }
-
-    animate() {
-        window.requestAnimationFrame(() => this.animate());
-        this.mesh.rotation.x += 0.01;
-        this.mesh.rotation.y += 0.02;
-        this.renderer.render(this.scene, this.camera);
-    }
+  onSelect(exercise: Exercise):void {
+    this.currentExercise = exercise;
+  }
+  
+  ngOnInit() {
+    this.getExercises();
+  }
 }

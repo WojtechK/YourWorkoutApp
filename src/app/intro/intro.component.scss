@@ -48,8 +48,9 @@
     flex-direction: column;
     position: absolute;
     align-items: center;
+    justify-content: center;
     bottom: 10%;
-    padding: 40px;
+    padding: 20px 200px;
     animation: Pulse 1.5s infinite alternate ease-in-out;
 
     p {
@@ -70,12 +71,12 @@
 
 .start-button:hover {
     p {
-        transform: translateY(-20px);
+        transform: translateX(-80px);
     }
 
     .arrow {
         opacity: 1;
-        transform: translateY(40px);
+        transform: translateX(120px);
     }
 }
 
@@ -119,9 +120,14 @@
         p {
             font-size: 5vw;
             letter-spacing: 2px;
-        }
+        }           
+    }
+    .start-button:hover {
+        p {
+            transform: translateX(-40px);
+        }   
         .arrow {
-            transform: translateY(20px);
+            transform: translateX(100px);
         }
     }
 }

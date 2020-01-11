@@ -8,40 +8,13 @@ import {
     animateChild
  } from '@angular/animations';
 
- export const slideInAnimation =
-   trigger('routeAnimations', [
-     transition('IntroPage <=> DashboardPage', [
-       style({
-         position: 'relative'
-       }),
-       query(':enter, :leave', [
-         style({
-           position: 'absolute',
-           top: 0,
-           left: 0,
-           width: '100%',
-           opacity: 1,
-           transform: 'translateY(100%)',
-         }),
-       ]),
-       query(':enter', [
-         animate('800ms ease-out',
-           style({
-             position: 'absolute',
-             top: 0,
-             left: 0,
-             transform: 'translateY(0)'
-           }))
-       ])
-     ])
-   ])
-
-export const slideInAnimation2 =
+export const slideInAnimation =
   trigger('routeAnimations', [
     transition('IntroPage <=> DashboardPage', [
       style({ position: 'relative' }),
       query(':enter, :leave', [
         style({
+          overflow: 'hidden',
           position: 'absolute',
           top: 0,
           left: 0,
@@ -49,21 +22,23 @@ export const slideInAnimation2 =
         })
       ]),
       query(':enter', [
-        style({ left: '-100%'})
+        style({ 
+          overflow: 'hidden',
+          left: '100%'})
       ]),
       query(':leave', animateChild()),
       group([
         query(':leave', [
-          animate('600ms ease-out', style({ left: '100%'}))
+          animate('600ms ease-out', style({ overflow: 'hidden', left: '-100%'}))
         ]),
         query(':enter', [
-          animate('600ms ease-out', style({ left: '0%'}))
+          animate('600ms ease-out', style({ overflow: 'hidden', left: '0%'}))
         ])
       ]),
       query(':enter', animateChild()),
     ]),
 
-    transition('* <=> DashboardPage', [
+    transition('DashboardPage <=> WorkoutPage', [
       style({ position: 'relative' }),
       query(':enter, :leave', [
         style({
@@ -74,12 +49,12 @@ export const slideInAnimation2 =
         })
       ]),
       query(':enter', [
-        style({ left: '-100%'})
+        style({ left: '100%'})
       ]),
       query(':leave', animateChild()),
       group([
         query(':leave', [
-          animate('600ms ease-out', style({ left: '100%'}))
+          animate('600ms ease-out', style({ left: '-100%'}))
         ]),
         query(':enter', [
           animate('600ms ease-out', style({ left: '0%'}))

@@ -4,16 +4,16 @@
 
   <div class='title'>
     <header>
-      <p class='text-uppercase'> {{ title.split(' ')[0] }} </p>
-      <p class='text-uppercase'> {{ title.split(' ')[1] }} </p>
+      <p> {{ title.split(' ')[0] | uppercase }} </p>
+      <p> {{ title.split(' ')[1] | uppercase }} </p>
     </header>
     <div class='description'>
-      <p class='text-uppercase'> {{description}} </p>
+      <p> {{ description | uppercase }} </p>
     </div>
   </div>
 
   <div class='start-button' routerLink='/dashboard'>
-    <p class='text-uppercase'> start training now </p>
-    <i class="arrow material-icons"> keyboard_arrow_down </i>
+    <p> {{ button | uppercase }} </p>
+    <i class="arrow material-icons"> keyboard_arrow_right </i>
   </div>
 </div>

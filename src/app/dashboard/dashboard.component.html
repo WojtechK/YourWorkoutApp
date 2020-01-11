@@ -3,7 +3,7 @@
 <div class='main-container'>
 
   <div class='header'>
-    <p class='text-uppercase'> {{ header }} </p>
+    <p> {{ header | uppercase }} </p>
   </div>
 
   <div class='description' [ngStyle]="{display: innerWidth < '600' ? 'none' : 'flex'}">
@@ -11,10 +11,13 @@
   </div>
 
   <div class='list'>
-    <div class='workout-box' *ngFor='let workout of workouts' [routerLink]=" isWorkoutEnabled(workout) ? ['/workout'] : []">
-        <img src='../../assets/avatars/{{ workout }}.png' alt="{{ workout }} img">
-        <p> {{ workout }} </p> 
-        <i class="arrow material-icons"> keyboard_arrow_right </i> 
+    <div class='workout-box' 
+    *ngFor='let workout of workouts' 
+    [routerLink]=" isWorkoutEnabled(workout) ? ['/workout'] : []"
+    >
+        <img src='../../assets/avatars/{{ workout.name }}.png' alt="{{ workout.name }} img">
+        <p> {{ workout.name }} </p>
+        <i class="arrow material-icons"> keyboard_arrow_right </i>
     </div>
   </div>
 </div>
