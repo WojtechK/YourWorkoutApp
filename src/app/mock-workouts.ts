@@ -7,11 +7,11 @@
     },
     {
       name: 'back',
-      enabled: false
+      enabled: true
     },
     {
       name: 'chest',
-      enabled: false
+      enabled: true
     },
     {
       name: 'biceps',
@@ -34,4 +34,3 @@
       enabled: false
     },
   ];
-

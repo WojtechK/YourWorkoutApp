@@ -17,9 +17,15 @@ export class WorkoutComponent implements OnInit {
     ) {}
 
   exercises: Exercise[];
+
+  //exercises of choosen Workout
+  currentExercises: Exercise[];
+  //choosen exercise
   currentExercise: Exercise;
+
   currentWorkout: string;
   header: string;
+
   
   //route value passed by Router from DashboardComponent
   setCurrentWorkout(): void {
@@ -31,6 +37,14 @@ export class WorkoutComponent implements OnInit {
       .subscribe(exercises => this.exercises = exercises);
   }
 
+  setExercises(): void { 
+    this.currentExercises = this.exercises.filter((exercise) => {
+      if (exercise.workout == this.currentWorkout) { 
+        return exercise;
+      }
+    });
+  }
+
   onSelect(exercise: Exercise):void {
     this.currentExercise = exercise;
   }
@@ -38,6 +52,7 @@ export class WorkoutComponent implements OnInit {
   ngOnInit() {
     this.getExercises();
     this.setCurrentWorkout();
+    this.setExercises();
     this.header = this.currentWorkout;
   }
 }

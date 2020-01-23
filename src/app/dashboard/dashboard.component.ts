@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WORKOUTS }  from '../mock-workouts';
+import { Workout } from '../workout';
 import { Router} from '@angular/router';
 
 @Component({
@@ -15,10 +16,10 @@ export class DashboardComponent implements OnInit {
 
   readonly header: string = 'workouts';
   readonly description: string = 'Choose exercises plan prepared especially for you';
-  workouts: any;
+  workouts: Workout[];
   innerWidth: any;
 
-  currentWorkout;
+  currentWorkout: Workout;
 
   setCurrentWorkout(workout): void {
     this.currentWorkout = workout;
@@ -28,10 +29,6 @@ export class DashboardComponent implements OnInit {
     if(workout.enabled === true) {
       return true;
     }
-  }
-
-  navigate(): void { 
-    this.router.navigate(['/workout/', this.currentWorkout.name])
   }
 
   ngOnInit() {

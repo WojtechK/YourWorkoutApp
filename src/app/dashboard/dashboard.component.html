@@ -15,7 +15,7 @@
     *ngFor='let workout of workouts'
     (click)='setCurrentWorkout(workout)'
     (click)='navigate()'
-    [routerLink]="['/workout/', workout.name]"
+    [routerLink]=" isWorkoutEnabled(workout) ? ['/workout/', workout.name] : []"
     >
         <img src='../../assets/avatars/{{ workout.name }}.png' alt="{{ workout.name }} img">
         <p> {{ workout.name }} </p>

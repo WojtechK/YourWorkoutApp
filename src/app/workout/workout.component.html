@@ -7,16 +7,17 @@
   </div>
 
   <div class='exercises-container'>
-    <ul class='exercises-list'>
-      <li 
-      class='exercise-box'
-      *ngFor='let exercise of exercises'
-      (click)='onSelect(exercise)'
-      [class.selected]='exercise===currentExercise'
-      >
-       <p> {{ exercise.title }} </p>
-        <i class="arrow material-icons"> keyboard_arrow_right </i>
-      </li>
+    <ul class='exercises-list'>     
+        <li
+        class='exercise-box'
+        *ngFor='let exercise of currentExercises'
+        (click)='onSelect(exercise)'
+        [class.selected]='exercise===currentExercise'
+        >      
+         <p> {{ exercise.title }} </p>
+          <i class="arrow material-icons"> keyboard_arrow_right </i>      
+        </li>    
+
     </ul>
     <div class='exercise-details' *ngIf='currentExercise'>
       <p> {{ currentExercise.title }} </p>
