@@ -1,4 +1,6 @@
-  export const WORKOUTS = [
+  import { Workout } from './workout';
+  
+  export const WORKOUTS: Workout[] = [
     {
       name: 'abs',
       enabled: true

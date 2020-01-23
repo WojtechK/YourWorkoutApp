@@ -11,9 +11,11 @@
   </div>
 
   <div class='list'>
-    <div class='workout-box' 
-    *ngFor='let workout of workouts' 
-    [routerLink]=" isWorkoutEnabled(workout) ? ['/workout'] : []"
+    <div class='workout-box'
+    *ngFor='let workout of workouts'
+    (click)='setCurrentWorkout(workout)'
+    (click)='navigate()'
+    [routerLink]="['/workout/', workout.name]"
     >
         <img src='../../assets/avatars/{{ workout.name }}.png' alt="{{ workout.name }} img">
         <p> {{ workout.name }} </p>

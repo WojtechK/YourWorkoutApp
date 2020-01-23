@@ -7,7 +7,7 @@ import { WorkoutComponent } from './workout/workout.component';
 const routes: Routes = [ 
   { path: '', component: IntroComponent, data: {animation: 'IntroPage'} },
   { path: 'dashboard', component: DashboardComponent, data: {animation: 'DashboardPage'} },
-  { path: 'workout', component: WorkoutComponent, data: {animation: 'WorkoutPage'} }
+  { path: 'workout/:name', component: WorkoutComponent, data: {animation: 'WorkoutPage'} }
 ]
 
 @NgModule({
