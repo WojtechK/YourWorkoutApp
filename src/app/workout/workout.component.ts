@@ -34,10 +34,13 @@ export class WorkoutComponent implements OnInit {
   
   getExercises(): void {
     this.workoutService.getExercises()
-      .subscribe(exercises => this.exercises = exercises);
+      .subscribe(exercises => {
+        this.exercises = exercises;
+        this.setExercises();
+      });
   }
 
-  setExercises(): void { 
+  setExercises(): void {
     this.currentExercises = this.exercises.filter((exercise) => {
       if (exercise.workout == this.currentWorkout) { 
         return exercise;
@@ -52,7 +55,6 @@ export class WorkoutComponent implements OnInit {
   ngOnInit() {
     this.getExercises();
     this.setCurrentWorkout();
-    this.setExercises();
     this.header = this.currentWorkout;
   }
 }
