@@ -56,6 +56,11 @@
     font-size: $global-text-size;
     border: 0.5px solid $box-border-color;
     transition: 0.5s;
+    .name { 
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
     .arrow { 
         color: $global-theme-color;
         font-size: 48px;

@@ -1,5 +1,4 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Exercise } from '../exercise';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const EXERCISES: Exercise[] = [{
+    const EXERCISES = [{
         id: 1,
         title: 'sit ups',
         workout: 'abs',

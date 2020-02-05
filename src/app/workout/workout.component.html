@@ -7,13 +7,42 @@
   </div>
 
   <div class='exercises-container'>
-    <ul class='exercises-list'>     
+    <div class='new-exercise'>
+      <button type="button" (click)='showModal()'>
+        new
+      </button>
+    </div>
+
+    <div *ngIf='modalActive' class="background-modal">
+      <div class="modal-container">
+        <div class="close" (click)='closeModal()'> + </div>
+        <p>Define your own exercise</p>
+        <form action="">
+          <input type="text" #title placeholder="Title">
+          <input type="text" #description placeholder="Description">
+          <input type="number" #difficulty placeholder="Difficulty">
+          <input type="text" #workout [value]="currentWorkout" disabled>
+          <div class='submit'>
+            <a
+            (click)= 'addExercise(title.value, description.value, difficulty.value, workout.value); 
+            getExercises();
+            closeModal()'
+            > 
+            save 
+          </a>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+
+    <ul class='exercises-list'>
         <li
         class='exercise-box'
         *ngFor='let exercise of currentExercises'
         (click)='onSelect(exercise)'
         [class.selected]='exercise===currentExercise'
-        >      
+        >
          <p> {{ exercise.title }} </p>
           <i class="arrow material-icons"> keyboard_arrow_right </i>      
         </li>    

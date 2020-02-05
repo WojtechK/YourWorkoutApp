@@ -25,6 +25,7 @@ export class WorkoutComponent implements OnInit {
 
   currentWorkout: string;
   header: string;
+  modalActive: boolean = false;
 
   
   //route value passed by Router from DashboardComponent
@@ -50,6 +51,26 @@ export class WorkoutComponent implements OnInit {
 
   onSelect(exercise: Exercise):void {
     this.currentExercise = exercise;
+  }
+
+  showModal(): void {
+    this.modalActive = true;
+  }
+
+  closeModal(): void {
+    this.modalActive = false;
+  }
+
+  addExercise(title: string, description: string, difficulty: number, workout: string): void {
+    title = title.trim();
+    description = description.trim();
+    if (!title || !description || !difficulty) { 
+      return; 
+    }
+    this.workoutService.addExercise({ title, description, difficulty, workout } as Exercise)
+      .subscribe(exercise => {
+        this.exercises.push(exercise);
+      });
   }
 
   ngOnInit() {
