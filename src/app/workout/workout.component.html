@@ -20,39 +20,41 @@
         <form action="">
           <input type="text" #title placeholder="Title">
           <input type="text" #description placeholder="Description">
-          <input type="number" #difficulty placeholder="Difficulty">
+          <input type="number" min=1 max=5 #difficulty placeholder="Difficulty">
           <input type="text" #workout [value]="currentWorkout" disabled>
           <div class='submit'>
-            <a
-            (click)= 'addExercise(title.value, description.value, difficulty.value, workout.value); 
+            <a 
+            (click)='addExercise(title.value, description.value, difficulty.value, workout.value); 
             getExercises();
-            closeModal()'
-            > 
-            save 
-          </a>
+            closeModal()'>
+              save
+            </a>
           </div>
-          
+
         </form>
       </div>
     </div>
 
     <ul class='exercises-list'>
-        <li
-        class='exercise-box'
-        *ngFor='let exercise of currentExercises'
-        (click)='onSelect(exercise)'
-        [class.selected]='exercise===currentExercise'
-        >
-         <p> {{ exercise.title }} </p>
-          <i class="arrow material-icons"> keyboard_arrow_right </i>      
-        </li>    
-
+      <li class='exercise-box' *ngFor='let exercise of currentExercises' (click)='onSelect(exercise)'
+        [class.selected]='exercise===currentExercise'>
+        <p> {{ exercise.title }} </p>
+        <i class="arrow material-icons"> keyboard_arrow_right </i>
+      </li>
     </ul>
     <div class='exercise-details' *ngIf='currentExercise'>
-      <p> {{ currentExercise.title }} </p>
-      <p> <b>description:</b> {{ currentExercise.description }} </p>
-      <p> <b>difficulty:</b> {{ currentExercise.difficulty }} </p>
+
+      <div class='details'>
+        <p><b>{{  currentExercise.title | uppercase }} </b></p>
+        <p> <span>description:</span>  <br> {{ currentExercise.description }} </p>
+        <p> <span>difficulty:</span> <br> {{ currentExercise.difficulty }} </p>
+      </div>
+
+      <div class='timer'>
+        <div class='counter' *ngIf="counter"> {{counter}}s </div>
+        <button class="timer-button" (click)="startTimer()">{{ startText }}</button>
+        <button class="timer-button" (click)="clearTimer()">Clear</button>
+      </div>
     </div>
   </div>
-
 </div>

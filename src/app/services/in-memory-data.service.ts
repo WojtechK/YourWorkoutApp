@@ -10,7 +10,7 @@ export class InMemoryDataService implements InMemoryDbService {
         id: 1,
         title: 'sit ups',
         workout: 'abs',
-        description: 'lorem ipsum dorem la',
+        description: 'start with lying with the back on the floor, keep hands behind the head and the knees bent, then pick up your chest to your knees',
         difficulty: 2
       },
       {

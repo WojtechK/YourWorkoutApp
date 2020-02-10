@@ -11,18 +11,17 @@
   </div>
 
   <div class='list'>
-    <div class='workout-box'
-    *ngFor='let workout of workouts'
+    <div class='workout-box' 
+    *ngFor='let workout of workouts' 
     (click)='setCurrentWorkout(workout)'
-    [routerLink]=" isWorkoutEnabled(workout) ? ['/workout/', workout.name] : []"
-    >
-        <img src='../../assets/avatars/{{ workout.name }}.png' alt="{{ workout.name }} img">
-        <div class='name'>
-          <p> {{ workout.name }}  </p>
-          <i *ngIf='!isWorkoutEnabled(workout)' class="material-icons"> lock </i>
-        </div>
-        
-        <i class="arrow material-icons"> keyboard_arrow_right </i>
+    [routerLink]=" isWorkoutEnabled(workout) ? ['/workout/', workout.name] : []">
+      <img src='../../assets/avatars/{{ workout.name }}.png' alt="{{ workout.name }} img">
+      <div class='name'>
+        <p> {{ workout.name }} </p>
+        <i *ngIf='!isWorkoutEnabled(workout)' class="material-icons"> lock </i>
+      </div>
+
+      <i class="arrow material-icons"> keyboard_arrow_right </i>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Exercise } from '../exercise';
 import { WorkoutService } from '../services/workout.service';
 import {ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import {ActivatedRoute } from '@angular/router';
   templateUrl: './workout.component.html',
   styleUrls: ['./workout.component.scss']
 })
-export class WorkoutComponent implements OnInit {
+export class WorkoutComponent implements OnInit, OnDestroy {
 
   constructor(
     private workoutService: WorkoutService,
@@ -17,7 +17,6 @@ export class WorkoutComponent implements OnInit {
     ) {}
 
   exercises: Exercise[];
-
   //exercises of choosen Workout
   currentExercises: Exercise[];
   //choosen exercise
@@ -27,7 +26,11 @@ export class WorkoutComponent implements OnInit {
   header: string;
   modalActive: boolean = false;
 
-  
+  //stopwatch
+  interval = 500;  
+  seconds = 30;  
+  time = this.seconds * this.interval * 60;
+
   //route value passed by Router from DashboardComponent
   setCurrentWorkout(): void {
     this.currentWorkout = this.route.snapshot.paramMap.get('name');
@@ -71,6 +74,35 @@ export class WorkoutComponent implements OnInit {
       .subscribe(exercise => {
         this.exercises.push(exercise);
       });
+  }
+  counter: number = 0;
+  timerRef;
+  running: boolean = false;
+  startText = 'Start';
+
+  startTimer() {
+    this.running = !this.running;
+    if (this.running) {
+      this.startText = 'Stop';
+      const startTime = new Date().getSeconds() - (this.counter || 1);
+      this.timerRef = setInterval(() => {
+        this.counter = new Date().getSeconds() - startTime;
+      });
+    } else {
+      this.startText = 'Resume';
+      clearInterval(this.timerRef);
+    }
+  }
+
+  clearTimer() {
+    this.running = false;
+    this.startText = 'Start';
+    this.counter = undefined;
+    clearInterval(this.timerRef);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.timerRef);
   }
 
   ngOnInit() {
